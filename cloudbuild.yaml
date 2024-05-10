@@ -1,16 +1,16 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/prakdeploy', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/prakdeploy-2', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/prakdeploy']
+    args: ['push', 'gcr.io/$PROJECT_ID/prakdeploy-2']
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       [
         'run',
         'deploy',
-        'prakdeploy',
+        'prakdeploy-2',
         '--image',
-        'gcr.io/$PROJECT_ID/prakdeploy',
+        'gcr.io/$PROJECT_ID/prakdeploy-2',
         '--region',
         'asia-southeast2',
         '--platform',
